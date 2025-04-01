@@ -1,0 +1,19 @@
+{
+  "name": "nodejsassign",
+  "version": "1.0.0",
+  "description": "node js app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Marlesli/NodeJSA.git)"
+  },
+  "author": "Maria",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0"
+  }
+}
