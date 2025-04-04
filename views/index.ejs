@@ -18,9 +18,9 @@
     </form>
 </div>
 <div>
-    <form action="/update" method="POST">
+    <form action="/done" method="POST">
         <% for(var i = 0; i < tasks.length; i++){ %>
-            <li> <%=tasks [i]%></li>
+            <li> <input type="checkbox" name="task" value="<%=tasks [i]%>"><%=tasks [i]%></li>
         <% } %>
         <button>
             Complete Task
