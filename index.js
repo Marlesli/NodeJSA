@@ -4,10 +4,49 @@ var bodyParseer = require("body-parser");
 const path = require('path');
 const bodyParser = require('body-parser');
 
+
+const mongoose = require('mongoose');
+const uri = "mongodb+srv://bellamymaria:NTLZQT87YRyumf2d@cluster0.wccklaz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+  
+  const db = mongoose.connection;
+  
+  db.on('connected', () => {
+    console.log('Successfully connected to MongoDB!');
+  });
+  
+  db.on('error', (err) => {
+    console.error('MongoDB connection error:', err);
+  });
+  
+// const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
+
+// async function run() {
+//   try {
+//     // Create a Mongoose client with a MongoClientOptions object to set the Stable API version
+//     await mongoose.connect(uri, clientOptions);
+//     await mongoose.connection.db.admin().command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//   } finally {
+//     // Ensures that the client will close when you finish/error
+//     //await mongoose.disconnect();
+//   }
+// }
+// run().catch(console.dir);
+
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({encoded: false}));
+app.use(express.static('public'));
+
+
 
 var tasks =["create to do list", "add items"]
 
@@ -48,3 +87,31 @@ app.listen(3000, function() {
     //}
     // == are they the same 
     // === are they the same and of the same type
+
+
+    
+// const { MongoClient, ServerApiVersion } = require('mongodb');
+// const uri = "mongodb+srv://bellamymaria:zZRiFMIYYEwoefYh@cluster0.wccklaz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// const client = new MongoClient(uri, {
+//   serverApi: {
+//     version: ServerApiVersion.v1,
+//     strict: true,
+//     deprecationErrors: true,
+//   }
+// });
+
+// async function run() {
+//   try {
+//     // Connect the client to the server	(optional starting in v4.7)
+//     await client.connect();
+//     // Send a ping to confirm a successful connection
+//     await client.db("admin").command({ ping: 1 });
+//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//   } finally {
+//     // Ensures that the client will close when you finish/error
+//     await client.close();
+//   }
+// }
+// run().catch(console.dir);
