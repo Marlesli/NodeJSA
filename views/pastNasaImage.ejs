@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past NASA Image</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<h1>Past NASA Image</h1>
+
+<h2><%= image.title %></h2>
+<img src="<%= image.url %>" alt="NASA Image" style="max-width: 500px;">
+<p><%= image.description %></p>
+
+<h2>Incomplete Tasks</h2>
+<ul>
+  <% tasks.forEach(task => { %>
+    <li><%= task.taskName %></li>
+  <% }) %>
+</ul>
+
+<a href="/">Go Back</a>
+
+</body>
+</html>

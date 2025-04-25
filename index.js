@@ -57,6 +57,28 @@ app.get('/', async (req, res) => {
   }
 });
 
+// Handle the POST request for the selected date
+app.post('/fetch-past-image', async (req, res) => {
+    const { date } = req.body;
+    const pastNasaApiUrl = `https://api.nasa.gov/planetary/apod?api_key=${nasaApiKey}&date=${date}`;
+  
+    try {
+      // Fetch the NASA image for the selected date
+      const response = await axios.get(pastNasaApiUrl);
+      const image = response.data;
+  
+      // Fetch Todo List (if necessary, can be used in the same page)
+      const tasks = await todoModel.find({ done: false });
+  
+      // Render the page with the past NASA image and the todo tasks
+      res.render('pastNasaImage', { image, tasks });
+    } catch (err) {
+      console.error('Error fetching data from NASA API:', err);
+      res.status(500).send('Error fetching image from NASA API');
+    }
+  });
+  
+
 // Add task to the todo list
 app.post('/add', function (req, res) {
   const todo = new todoModel({
@@ -91,7 +113,7 @@ app.post('/done', async function (req, res) {
 
   const tasks = await todoModel.find({ '_id': { $in: taskIds } });
     console.log("Tasks to be marked as done:", tasks);
-    
+
   try {
     // Update the tasks as done in the database
     await todoModel.updateMany(
