@@ -8,7 +8,8 @@
 </head>
 <body>
 
-    <h1>Welcome, here is my resume and some facts about me</h1>
+    <h1>Welcome to Todo List and Nasa Images</h1>
+    <p>Also, here are some fun facts about me:</p>
     <p>I enjoy singing/songwriting</p>
     <p>I do photography in my spare time</p>
 
@@ -25,6 +26,8 @@
     <div>
         <form action="/done" method="POST">
             <ul>
+                <p>Your tasks will be listed here. Check them off and click the button below 
+                    as you go to complete them.</p>
                 <% for (var i = 0; i < tasks.length; i++) { %>
                     <li>
                         <input type="checkbox" name="task" value="<%= tasks[i]._id %>" <%= tasks[i].done ? 'checked' : '' %> />

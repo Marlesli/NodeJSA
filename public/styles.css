@@ -7,8 +7,8 @@
   
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    background-color: #363870;
+    color: white;
     padding: 30px;
     line-height: 1.6;
   }
@@ -16,7 +16,7 @@
   h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: white;
   }
   
   p {
@@ -25,11 +25,16 @@
     text-align: center;
   }
   
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+  }
   form {
     margin: 20px auto;
     max-width: 500px;
     padding: 15px;
-    background-color: #ffffff;
+    background-color: #6a8dd4;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
@@ -54,7 +59,7 @@
   
   button {
     padding: 10px 15px;
-    background-color: #3498db;
+    background-color: #8f34eb;
     color: white;
     font-size: 1em;
     border: none;
@@ -63,6 +68,6 @@
   }
   
   button:hover {
-    background-color: #2980b9;
+    background-color: #8f34eb;
   }
   
