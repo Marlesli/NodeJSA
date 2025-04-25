@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset = "UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome</title>
-<link rel="stylesheet" href="/styles.css">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
 
-<h1>Welcome, here is my resume and some facts about me</h1>
-<p>I enjoy singing/songwriting</p>
-<p>I do photography in my spare time</p>
-<div>
-    <form action="/add" method="POST">
-        <input type="text" name="newTask" placeholder="Add a new task"/>
-        <button>
-            Add Task
-        </button>
-    </form>
-</div>
-<div>
-    <form action="/done" method="POST">
-        <% for(var i = 0; i < tasks.length; i++){ %>
-            <li> 
-                <% if(tasks[i].done){ %>
-                <input type="checkbox" name="task" value="<%=tasks[i]._id%>"checked="<%=tasks[i].done%>">
-                <% } else {%>
-                    <input type ="checkbox" name="task" value="<%=tasks[i]._id%>">
-                    <% } %>
-                <%=tasks [i].taskName%></li>
-        <% } %>
-        <button>
-            Complete Task
-        </button>
-    </form>
-</div>
-</body>
-</html>
+    <h1>Welcome, here is my resume and some facts about me</h1>
+    <p>I enjoy singing/songwriting</p>
+    <p>I do photography in my spare time</p>
+
+    <h2>Task List</h2>
+    <!-- Add task form -->
+    <div>
+        <form action="/add" method="POST">
+            <input type="text" name="newTask" placeholder="Add a new task"/>
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+
+    <!-- Display incomplete tasks -->
+    <div>
+        <form action="/done" method="POST">
+            <ul>
+                <% for (var i = 0; i < tasks.length; i++) { %>
+                    <li>
+                        <input type="checkbox" name="task" value="<%= tasks[i]._id %>" <%= tasks[i].done ? 'checked' : '' %> />
+                        <%= tasks[i].taskName %>
+                    </li>
+                <% } %>
+            </ul>
+            <button type="submit">Complete Task</button>
+        </form>
+    </div>
+
+    <hr>
+
+
+    <h2>NASA Image of the Day</h2>
+    <img src="<%= image.url %>" alt="NASA Image of the Day" style="max-width: 500px;">
+    <p><%= image.description %></p>
+
+    <!-- Add this after the NASA Image of the Day section in your index.ejs -->
+<h2>Select a Past NASA Image</h2>
+<form action="/fetch-past-image" method="POST">
+  <label for="date">Select a Date:</label>
+  <input type="date" id="date" name="date" required>
+  <button type="submit">Fetch Image</button>
+</form>
+
+
+    
+    <form action="/save" method="POST">
+        <input type="hidden" name="title" value="<%= image.title %>">
+        <input type="hidden" name="date" value="<%= image.date %>">
+        <input type="
