@@ -1,0 +1,24 @@
+<h1>Saved NASA Images</h1>
+
+<ul>
+  <% images.forEach(image => { %>
+    <li>
+      <h3><%= image.title %></h3>
+      <img src="<%= image.url %>" alt="<%= image.title %>" style="max-width: 500px;">
+      <p><%= image.description %></p>
+      <form action="/delete" method="POST">
+        <input type="hidden" name="imageId" value="<%= image._id %>">
+        <button type="submit">Delete Image</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+<h2>Incomplete Tasks</h2>
+<ul>
+  <% tasks.forEach(task => { %>
+    <li><%= task.taskName %></li>
+  <% }) %>
+</ul>
+
+<a href="/">Go Back</a>
