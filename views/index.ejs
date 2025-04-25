@@ -22,7 +22,13 @@
 <div>
     <form action="/done" method="POST">
         <% for(var i = 0; i < tasks.length; i++){ %>
-            <li> <input type="checkbox" name="task" value="<%=tasks [i]%>"><%=tasks [i]%></li>
+            <li> 
+                <% if(tasks[i].done){ %>
+                <input type="checkbox" name="task" value="<%=tasks[i]._id%>"checked="<%=tasks[i].done%>">
+                <% } else {%>
+                    <input type ="checkbox" name="task" value="<%=tasks[i]._id%>">
+                    <% } %>
+                <%=tasks [i].taskName%></li>
         <% } %>
         <button>
             Complete Task
